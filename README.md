@@ -51,3 +51,5 @@ docker compose up --build
 ```
 
 O servidor estará disponível em localhost:30120 ou na porta especificada no arquivo `docker-compose.yml`.
+
+[Video apresentando a aplicação](https://www.youtube.com/watch?v=I54XKEdrpoc)

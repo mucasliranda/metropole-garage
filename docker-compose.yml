@@ -1,0 +1,28 @@
+services:
+  fivem:
+    image: spritsail/fivem:latest
+    container_name: metropole-garage
+    restart: on-failure
+    environment:
+      - LICENSE_KEY=<LICENSE_KEY>
+    ports:
+      - 30120:30120
+      - 30120:30120/udp
+    volumes:
+      - ./volumes:/config
+    tty: true
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    container_name: metropole-garage-mysql
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=metropole-garage
+      - MYSQL_DATABASE=metropole-garage
+      - MYSQL_USER=metropole-garage
+      - MYSQL_PASSWORD=metropole-garage
+    volumes:
+      - ./volumes/mysql/db:/var/lib/mysql
+      - ./volumes/mysql/init:/docker-entrypoint-initdb.d
+    tty: true
